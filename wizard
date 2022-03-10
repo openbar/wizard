@@ -1,6 +1,6 @@
 #!/bin/sh
 
-OB_VERSION=${1:-1.0.0}
+OB_VERSION=${1:-refs/tags/1.0.0}
 
 # Colorize the output
 red()    { printf "\033[0;31m${@}\033[0m"; }
