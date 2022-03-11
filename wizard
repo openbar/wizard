@@ -222,7 +222,7 @@ fi
 
 if [ "${OB_TYPE}" = yocto ]
 then
-    OB_OPENBAR_DIR_DEFAULT="plateform/openbar"
+    OB_OPENBAR_DIR_DEFAULT="platform/openbar"
 
     if ask_yesno "Do you need meta-openembedded?" "no"
     then
@@ -252,12 +252,12 @@ OB_OPENBAR_DIR=$(ask_value "What is the path of the openbar directory?" ${OB_OPE
 
 if [ "${OB_TYPE}" = yocto ]
 then
-    OB_POKY_DIR=$(ask_value "What is the path of the poky directory?" "plateform/poky" \
+    OB_POKY_DIR=$(ask_value "What is the path of the poky directory?" "platform/poky" \
         | sanitize onlyprint noleadingslash notrailingslash nospace preferedlower)
 
     if [ "${OB_YOCTO_OE}" = yes ]
     then
-        OB_OE_DIR=$(ask_value "What is the path of the meta-openembedded directory?" "plateform/meta-openembedded" \
+        OB_OE_DIR=$(ask_value "What is the path of the meta-openembedded directory?" "platform/meta-openembedded" \
             | sanitize onlyprint noleadingslash notrailingslash nospace preferedlower)
     fi
 fi
