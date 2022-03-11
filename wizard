@@ -475,6 +475,14 @@ EOF
 EOF
 }
 
+## create_gitignore_submodule <directory>
+create_gitignore_submodule()
+{
+    cat > ${1}/.gitignore << EOF
+/.config*
+EOF
+}
+
 ## create_project <directory>
 create_project()
 {(
@@ -509,6 +517,8 @@ create_project()
             echo "Adding meta-openembedded submodule..."
             git -C ${OB_GIT_MAIN_PATH} submodule --quiet add "git://git.openembedded.org/meta-openembedded" ${OB_OE_DIR}
         fi
+
+        create_gitignore_submodule ${ROOT_DIR}
 
     elif [ "${OB_GIT_TYPE}" = repo ]
     then
