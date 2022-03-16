@@ -421,7 +421,7 @@ create_manifest_standard()
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
 	<remote name="origin" fetch="${ORIGIN_FETCH}" />
-	<remote name="github" fetch="git://github.com" />
+	<remote name="github" fetch="https://github.com" />
 
 	<default remote="origin" revision="main" sync-j="4" />
 
@@ -444,14 +444,14 @@ create_manifest_yocto()
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
 	<remote name="origin" fetch="${ORIGIN_FETCH}" />
-	<remote name="github" fetch="git://github.com" />
-	<remote name="yoctoproject" fetch="git://git.yoctoproject.org" />
+	<remote name="github" fetch="https://github.com" />
+	<remote name="yoctoproject" fetch="https://git.yoctoproject.org" />
 EOF
 
     if [ "${OB_YOCTO_OE}" = yes ]
     then
         cat >> ${1}/default.xml << EOF
-	<remote name="openembedded" fetch="git://git.openembedded.org" />
+	<remote name="openembedded" fetch="https://git.openembedded.org" />
 EOF
     fi
 
@@ -507,19 +507,19 @@ create_project()
         local ROOT_DIR=${OB_GIT_MAIN_PATH}
 
         echo "Adding openbar submodule..."
-        git -C ${OB_GIT_MAIN_PATH} submodule --quiet add "git://github.com/openbar/openbar" ${OB_OPENBAR_DIR}
+        git -C ${OB_GIT_MAIN_PATH} submodule --quiet add "https://github.com/openbar/openbar" ${OB_OPENBAR_DIR}
         git -C ${OB_GIT_MAIN_PATH}/${OB_OPENBAR_DIR} checkout --quiet ${OB_VERSION}
 
         if [ -n "${OB_POKY_DIR}" ]
         then
             echo "Adding poky submodule..."
-            git -C ${OB_GIT_MAIN_PATH} submodule --quiet add "git://git.yoctoproject.org/poky" ${OB_POKY_DIR}
+            git -C ${OB_GIT_MAIN_PATH} submodule --quiet add "https://git.yoctoproject.org/poky" ${OB_POKY_DIR}
         fi
 
         if [ -n "${OB_OE_DIR}" ]
         then
             echo "Adding meta-openembedded submodule..."
-            git -C ${OB_GIT_MAIN_PATH} submodule --quiet add "git://git.openembedded.org/meta-openembedded" ${OB_OE_DIR}
+            git -C ${OB_GIT_MAIN_PATH} submodule --quiet add "https://git.openembedded.org/meta-openembedded" ${OB_OE_DIR}
         fi
 
         create_gitignore_submodule ${ROOT_DIR}
