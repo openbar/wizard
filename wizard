@@ -264,7 +264,7 @@ fi
 
 if [ "${OB_GIT_TYPE}" = repo ]
 then
-    OB_ROOT_FILE=$(ask_value "What is the name of the openbar root file?" "root.mk" \
+    OB_ROOT_FILE=$(ask_value "What is the name of the openbar root file?" "openbar.mk" \
         | sanitize onlyprint noleadingslash notrailingslash nospace preferedlower)
 else
     OB_ROOT_FILE="Makefile"
