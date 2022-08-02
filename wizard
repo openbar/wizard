@@ -303,7 +303,6 @@ RUN	set -x \
 		build-essential \
 		gawk \
 		make \
-		sudo \
 	&& rm -rf /var/lib/apt/lists/*
 EOF
 }
@@ -338,7 +337,6 @@ RUN	set -x \
 		python3 \
 		python3-distutils \
 		qemu \
-		sudo \
 		wget \
 		zstd \
 	&& rm -rf /var/lib/apt/lists/* \
