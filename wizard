@@ -1,6 +1,6 @@
 #!/bin/sh
 
-OB_VERSION=${1:-97f446350b55a0304c359102d980eb2e6e261009}
+OB_VERSION=${1:-5eaa715f340694c10ab277f9518482e175d57770}
 
 # Colorize the output
 red()    { printf "\033[0;31m${@}\033[0m"; }
