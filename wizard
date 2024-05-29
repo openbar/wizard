@@ -293,16 +293,14 @@ create_dockerfile_standard()
 {
     mkdir -p ${1}/docker/default
     cat > ${1}/docker/default/Dockerfile << "EOF"
-FROM	ubuntu:20.04
+FROM	debian:bookworm-slim
 
 RUN	set -x \
-	# Install the needed package
 	&& export DEBIAN_FRONTEND=noninteractive \
 	&& apt update \
 	&& apt install --no-install-recommends -y \
 		build-essential \
 		gawk \
-		make \
 	&& rm -rf /var/lib/apt/lists/*
 EOF
 }
@@ -312,10 +310,11 @@ create_dockerfile_yocto()
 {
     mkdir -p ${1}/docker/default
     cat > ${1}/docker/default/Dockerfile << "EOF"
-FROM	ubuntu:20.04
+FROM	debian:bookworm-slim
+
+ENV	LANG en_US.utf8
 
 RUN	set -x \
-	# Install the needed package
 	&& export DEBIAN_FRONTEND=noninteractive \
 	&& apt update \
 	&& apt install --no-install-recommends -y \
@@ -324,26 +323,17 @@ RUN	set -x \
 		chrpath \
 		cpio \
 		diffstat \
-		fakeroot \
 		file \
 		gawk \
 		git \
-		iproute2 \
-		iptables \
 		locales \
 		lz4 \
-		make \
-		openssh-client \
 		python3 \
-		python3-distutils \
-		qemu \
 		wget \
 		zstd \
 	&& rm -rf /var/lib/apt/lists/* \
-	# Configure the locales
-	&& localedef -i en_US -c -f UTF-8 en_US.UTF-8
-
-ENV	LANG en_US.utf8
+	&& sed -i 's:^# \(en_US.UTF-8 UTF-8\):\1:g' /etc/locale.gen \
+	&& locale-gen
 EOF
 }
 
